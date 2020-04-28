@@ -1,0 +1,307 @@
+﻿@model BlogTest.Models.BlogPost
+
+
+<div class="single-blog-wrapper section-padding-0-100">
+
+    <!-- Single Blog Area  -->
+    @*<div class="single-blog-area blog-style-2 mb-50">
+            <div class="single-blog-thumbnail">
+                <img src="img/bg-img/b5.jpg" alt="">
+                <div class="post-tag-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="post-date">
+                                    <a href="#">12 <span>march</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+    <div class="container">
+        <div class="row">
+            <!-- ##### Post Content Area ##### -->
+            <div class="col-12 col-lg-9">
+                <!-- Single Blog Area  -->
+                <div class="single-blog-area blog-style-2 mb-50">
+                    <!-- Blog Content -->
+                    <div class="single-blog-content">
+                        <div class="line"></div>
+                        <a href="#" class="post-tag"></a>
+                        <h3>@Model.Title </h3>
+                        <h4><a href="#" class="post-headline mb-0">@Model.Abstract</a></h4>
+                        <div class="post-meta mb-50">
+                            <p>Writen on: @Model.Created.ToString("MMM dd, yyyy")</p>
+                            <p>By <a href="#"></a></p>
+                            <p>Comments: @Model.Comments.Count.ToString()</p>
+                        </div>
+
+                        <p>@Html.Raw(Model.Body) </p>
+
+
+
+
+                    </div>
+                </div>
+
+
+
+                <!-- About Author -->
+                @*<div class="blog-post-author mt-100 d-flex">
+                        <div class="author-thumbnail">
+                            <img src="img/bg-img/b6.jpg" alt="">
+                        </div>
+                        <div class="author-info">
+                            <div class="line"></div>
+                            <span class="author-role">Author</span>
+                            <h4><a href="#" class="author-name">James Morrison</a></h4>
+                            <p>Not sure If I need this?</p>
+                        </div>
+                    </div>*@
+
+
+                @*Comments Area*@
+
+                <div class="row">
+                    <div class="col">
+                        @*@foreach (var comment in Model.Comments.OrderByDescending(k => k.Created).ToList)*@
+
+                            @foreach (var comment in Model.Comments.OrderByDescending(k => k.Created).ToList())
+                            {
+                                <div class="single_comment_area">
+                                    Comment Content
+                                    <div class="comment-content d-flex">
+                                        Comment Author
+                                        <div class="comment-author">
+                                            <img src="img/bg-img/b7.jpg" alt="author">
+                                        </div>
+                                        Comment Meta
+                                        <div class="comment-meta">
+                                            <a href="#" class="post-date">March 12</a>
+                                            <p><a href="#" class="post-author">Comment Meta area</a></p>
+                                            <p></p>
+                                            <a href="#" class="comment-reply">Reply</a>
+                                        </div>
+                                    </div>
+                                    @*<ol class="children">
+                        <li class="single_comment_area">
+                            Comment Content
+                            <div class="comment-content d-flex">
+                                Comment Author
+                                <div class="comment-author">
+                                    <img src="img/bg-img/b7.jpg" alt="author">
+                                </div>
+                                Comment Meta
+                                <div class="comment-meta">
+                                    <a href="#" class="post-date">March 12</a>
+                                    <p>
+                                        <a href="#" class="post-author">
+                                            Child Coment area?
+                                        </a>
+                                    </p>
+                                    <p>Efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt.</p>
+                                    <a href="#" class="comment-reply">Reply</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ol>*@
+                                </div>
+
+
+                            }
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Comment Area Start -->
+                <div class="comment_area clearfix mt-70">
+                    <h5 class="title">Make Comments:</h5>
+                    
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("Create", "Comments", FormMethod.Post, null))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("BlogPostId", Model.Id)
+                            @Html.HiddenFor(model => model.Slug)
+
+                            @Html.TextArea("CommentBody", new { rows = 20, cols = 100 })
+
+                            <button type="submit" class="btn btn-outline-dark">Add </button>
+                        }
+                    }
+
+
+
+
+
+
+
+                </div>
+
+                <div class="post-a-comment-area mt-70">
+                    @*<h5>Leave a reply</h5>*@
+                    <!-- Reply Form -->
+                    @*<form action="#" method="post">
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="group">
+                                        <input type="text" name="name" id="name" required>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="group">
+                                        <input type="email" name="email" id="email" required>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="group">
+                                        <input type="text" name="subject" id="subject" required>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Subject</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="group">
+                                        <textarea name="message" id="message" required></textarea>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Comment</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn original-btn">Reply</button>
+                                </div>
+                            </div>
+                        </form>*@
+                </div>
+            </div>
+
+            <!-- ##### Sidebar Area ##### -->
+            @*<div class="col-12 col-md-4 col-lg-3">
+                    <div class="post-sidebar-area">
+
+                         Widget Area
+                        <div class="sidebar-widget-area">
+                            <form action="#" class="search-form">
+                                <input type="search" name="search" id="searchForm" placeholder="Search">
+                                <input type="submit" value="submit">
+                            </form>
+                        </div>
+
+                         Widget Area
+                        <div class="sidebar-widget-area">
+                            <h5 class="title subscribe-title">Subscribe to my newsletter</h5>
+                            <div class="widget-content">
+                                <form action="#" class="newsletterForm">
+                                    <input type="email" name="email" id="subscribesForm" placeholder="Your e-mail here">
+                                    <button type="submit" class="btn original-btn">Subscribe</button>
+                                </form>
+                            </div>
+                        </div>
+
+                         Widget Area
+                        <div class="sidebar-widget-area">
+                            <h5 class="title">Advertisement</h5>
+                            <a href="#"><img src="img/bg-img/add.gif" alt=""></a>
+                        </div>
+
+                         Widget Area
+                        <div class="sidebar-widget-area">
+                            <h5 class="title">Latest Posts</h5>
+
+                            <div class="widget-content">
+
+                                 Single Blog Post
+                                <div class="single-blog-post d-flex align-items-center widget-post">
+                                     Post Thumbnail
+                                    <div class="post-thumbnail">
+                                        <img src="img/blog-img/lp1.jpg" alt="">
+                                    </div>
+                                     Post Content
+                                    <div class="post-content">
+                                        <a href="#" class="post-tag">Lifestyle</a>
+                                        <h4><a href="#" class="post-headline">Party people in the house</a></h4>
+                                        <div class="post-meta">
+                                            <p><a href="#">12 March</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                 Single Blog Post
+                                <div class="single-blog-post d-flex align-items-center widget-post">
+                                     Post Thumbnail
+                                    <div class="post-thumbnail">
+                                        <img src="img/blog-img/lp2.jpg" alt="">
+                                    </div>
+                                     Post Content
+                                    <div class="post-content">
+                                        <a href="#" class="post-tag">Lifestyle</a>
+                                        <h4><a href="#" class="post-headline">A sunday in the park</a></h4>
+                                        <div class="post-meta">
+                                            <p><a href="#">12 March</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                 Single Blog Post
+                                <div class="single-blog-post d-flex align-items-center widget-post">
+                                     Post Thumbnail
+                                    <div class="post-thumbnail">
+                                        <img src="img/blog-img/lp3.jpg" alt="">
+                                    </div>
+                                     Post Content
+                                    <div class="post-content">
+                                        <a href="#" class="post-tag">Lifestyle</a>
+                                        <h4><a href="#" class="post-headline">Party people in the house</a></h4>
+                                        <div class="post-meta">
+                                            <p><a href="#">12 March</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+                        </div>
+
+                         Widget Area
+                        <div class="sidebar-widget-area">
+                            <h5 class="title">Tags</h5>
+                            <div class="widget-content">
+                                <ul class="tags">
+                                    <li><a href="#">design</a></li>
+                                    <li><a href="#">fashion</a></li>
+                                    <li><a href="#">travel</a></li>
+                                    <li><a href="#">music</a></li>
+                                    <li><a href="#">party</a></li>
+                                    <li><a href="#">video</a></li>
+                                    <li><a href="#">photography</a></li>
+                                    <li><a href="#">adventure</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { slug = Model.Slug }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

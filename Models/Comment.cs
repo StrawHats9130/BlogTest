@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace BlogTest.Models
 {
@@ -21,7 +22,7 @@ namespace BlogTest.Models
         public DateTime? Updated { get; set; }
 
         public string UpdateReason { get; set; }
-
+        [AllowHtml]
         public string Body { get; set; }
 
         //Navigational properties

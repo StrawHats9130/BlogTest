@@ -60,23 +60,34 @@ namespace BlogTest.Controllers
                 //var slug = helpers.URLFriendly(blogPost.Title);
 
                 var slug = StringUtilities.URLFriendly(blogPost.Title);
-                if(string.IsNullOrWhiteSpace(slug))
+
+                if (string.IsNullOrWhiteSpace(slug))
                 {
                     ModelState.AddModelError("Title", "The Title can not be empty.");
                     return View(blogPost);
                 }
-                if(ImageUploadValidator.IsWebFriendlyImage(image))
+                if (ImageUploadValidator.IsWebFriendlyImage(image))
                 {
+                    //isolating file name
+                    var justFileName = Path.GetFileNameWithoutExtension(image.FileName);
+                    //running through slug checker
+                    justFileName = StringUtilities.URLFriendly(justFileName);
+                    //adding time stamp width ticks
+                    justFileName = $"{justFileName}-{DateTime.Now.Ticks}";
+                    //adding the extension back on
+                    justFileName = $"{justFileName}{Path.GetExtension(image.FileName)}";
+
                     var fileName = Path.GetFileName(image.FileName);
-                    image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName)); 
-                    blogPost.MediaURL = "/Uploads/" + fileName;
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), justFileName));
+                    blogPost.MediaURL = "/Uploads/" + justFileName;
 
                 }
-                if(db.BlogPosts.Any(p=> p.Slug == slug))
+                if (db.BlogPosts.Any(p => p.Slug == slug))
                 {
                     ModelState.AddModelError("", $"The title '{blogPost.Title}'  has been used before");
                     return RedirectToAction("Index");
                 }
+                
                 blogPost.Slug = slug;
                 blogPost.Created = DateTime.Now;
                 db.BlogPosts.Add(blogPost);
@@ -107,11 +118,27 @@ namespace BlogTest.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Created,Title,Slug,Abstract,Body,MediaURL,Published")] BlogPost blogPost)
+        public ActionResult Edit([Bind(Include = "Id,Created,Title,Slug,Abstract,Body,MediaURL,Published")] BlogPost blogPost, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
+                if (ImageUploadValidator.IsWebFriendlyImage(image))
+                {
+                    //isolating file name
+                    var justFileName = Path.GetFileNameWithoutExtension(image.FileName);
+                    //running through slug checker
+                    justFileName = StringUtilities.URLFriendly(justFileName);
+                    //adding time stamp width ticks
+                    justFileName = $"{justFileName}-{DateTime.Now.Ticks}";
+                    //adding the extension back on
+                    justFileName = $"{justFileName}{Path.GetExtension(image.FileName)}";
 
+                    var fileName = Path.GetFileName(image.FileName);
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), justFileName));
+                    blogPost.MediaURL = "/Uploads/" + justFileName;
+                }
+
+                
                 blogPost.Updated = DateTime.Now;
                 db.Entry(blogPost).State = EntityState.Modified;
                 db.SaveChanges();
@@ -121,13 +148,13 @@ namespace BlogTest.Controllers
         }
 
         // GET: BlogPosts/Delete/5
-        public ActionResult Delete(string slug)
+        public ActionResult Delete(int? id)
         {
-            if (slug == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogPost blogPost = db.BlogPosts.FirstOrDefault(p => p.Slug == slug);
+            BlogPost blogPost = db.BlogPosts.FirstOrDefault(p => p.Id == id);
             if (blogPost == null)
             {
                 return HttpNotFound();
@@ -138,9 +165,9 @@ namespace BlogTest.Controllers
         // POST: BlogPosts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string slug)
+        public ActionResult DeleteConfirmed(int? id)
         {
-            BlogPost blogPost = db.BlogPosts.FirstOrDefault(p => p.Slug == slug);
+            BlogPost blogPost = db.BlogPosts.FirstOrDefault(p => p.Id == id);
             db.BlogPosts.Remove(blogPost);
             db.SaveChanges();
             return RedirectToAction("Index");

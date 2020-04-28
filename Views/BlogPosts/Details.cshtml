@@ -32,14 +32,20 @@
                         <div class="col">
                             @foreach (var comment in Model.Comments.OrderByDescending(k => k.Created).ToList())
                             {
+                                @Html.Hidden("Id", comment.Id)
+
                                 <div class="single_comment_area">
                                     <div class="row" style="border-top-style:groove; border-top-color:cyan; padding:15px; ">
                                         <div class="col">
                                             <div class="comment-meta">
 
                                                 <div class="comment-author">
-                                                    @*<img src="~/Images/b8.jpg" alt="author">*@
-                                                    <img src="~/Images/b8.jpg" />
+                                                    <img src="~/Images/b8.jpg" alt="author">
+                                                    @*@if (Model.MediaURL != null)
+                                {
+                                    <img class="img-respnsive" src="@Model.MediaURL " alt"" />
+                                }*@
+                                                    @*<img src="~/Images/b8.jpg" />*@
                                                 </div>
                                             </div>
                                         </div>
@@ -176,14 +182,14 @@
 
 
     <script>
-        ClassicEditor
-            .create(document.querySelector('#CommentBody'))
-            .then(editor => {
-                console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
+            ClassicEditor
+                .create(document.querySelector('#CommentBody'))
+                .then(editor => {
+                    console.log(editor);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>
 }
 

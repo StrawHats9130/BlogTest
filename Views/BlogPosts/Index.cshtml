@@ -41,6 +41,7 @@
 
     @foreach (var item in Model)
     {
+       
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Created)
@@ -63,8 +64,8 @@
             <td>
                 @if (item.MediaURL != null)
                 {
-                    <img class ="img-responsive" src="@item.MediaURL" alt="" />
-                    @Html.DisplayFor(modelItem => item.MediaURL)
+                    <img class="img-responsive" src="@item.MediaURL" alt="" />
+                    @*@Html.DisplayFor(modelItem => item.MediaURL)*@
                 }
             </td>
             <td>
@@ -73,7 +74,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { slug = item.Slug }) |
                 @Html.ActionLink("Details", "Details", new { slug = item.Slug }) |
-                @Html.ActionLink("Delete", "Delete", new { slug = item.Slug })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id})
             </td>
         </tr>
     }

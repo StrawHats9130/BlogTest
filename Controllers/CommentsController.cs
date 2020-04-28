@@ -48,8 +48,9 @@ namespace BlogTest.Controllers
         // POST: Comments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        
         [ValidateAntiForgeryToken]
+        [HttpPost, ValidateInput(false)]
         //public ActionResult Create([Bind(Include = "Id,BlogPostId,AuthorId,Created,Updated,UpdateReason,Body")] Comment comment)
         public ActionResult Create(string commentBody, int blogPostId, string slug )
         {
@@ -58,7 +59,7 @@ namespace BlogTest.Controllers
                 var newComment = new Comment
                 {
 
-                    Body = commentBody,
+                    CommentBody = commentBody,
                     BlogPostId = blogPostId,
                     Created = DateTime.Now,
                     AuthorId = User.Identity.GetUserId(),

@@ -23,7 +23,7 @@ namespace BlogTest.Models
 
         public string UpdateReason { get; set; }
         [AllowHtml]
-        public string Body { get; set; }
+        public string CommentBody { get; set; }
 
         //Navigational properties
         public virtual BlogPost BlogPost { get; set; }

@@ -28,7 +28,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Body)
-            
+
         </th>
         <th>
             @Html.DisplayNameFor(model => model.MediaURL)
@@ -39,38 +39,43 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Created)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Updated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Slug)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Abstract)
-        </td>
-        <td>
-            @Html.Raw(item.Body)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MediaURL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Published)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { slug = item.Slug }) |
-            @Html.ActionLink("Details", "Details", new { slug =item.Slug }) |
-            @Html.ActionLink("Delete", "Delete", new { slug = item.Slug })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Updated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Slug)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Abstract)
+            </td>
+            <td>
+                @Html.Raw(item.Body)
+            </td>
+            <td>
+                @if (item.MediaURL != null)
+                {
+                    <img class ="img-responsive" src="@item.MediaURL" alt="" />
+                    @Html.DisplayFor(modelItem => item.MediaURL)
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Published)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { slug = item.Slug }) |
+                @Html.ActionLink("Details", "Details", new { slug = item.Slug }) |
+                @Html.ActionLink("Delete", "Delete", new { slug = item.Slug })
+            </td>
+        </tr>
+    }
 
 </table>

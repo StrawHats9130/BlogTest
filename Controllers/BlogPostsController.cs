@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -49,7 +51,7 @@ namespace BlogTest.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Abstract,Body,MediaURL,Published,CommentBody")] BlogPost blogPost)
+        public ActionResult Create([Bind(Include = "Id,Title,Abstract,Body,MediaURL,Published,CommentBody")] BlogPost blogPost, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +64,13 @@ namespace BlogTest.Controllers
                 {
                     ModelState.AddModelError("Title", "The Title can not be empty.");
                     return View(blogPost);
+                }
+                if(ImageUploadValidator.IsWebFriendlyImage(image))
+                {
+                    var fileName = Path.GetFileName(image.FileName);
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName)); 
+                    blogPost.MediaURL = "/Uploads/" + fileName;
+
                 }
                 if(db.BlogPosts.Any(p=> p.Slug == slug))
                 {

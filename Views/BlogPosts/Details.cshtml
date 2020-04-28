@@ -61,7 +61,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p>@Html.Raw(comment.Body) </p>
+                                                    <p>@Html.Raw(comment.CommentBody) </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -85,7 +85,7 @@
 
                                 @Html.Hidden("BlogPostId", Model.Id)
                                 @Html.HiddenFor(model => model.Slug)
-                                @Html.TextArea("CommentBody", new { rows = 20, cols = 100 })
+                                @Html.TextArea("CommentBody", new { rows = 10, cols = 100 })
                                 <div class="row" style="padding:15px">
                                     <div class="col">
                                         <button type="submit" class="btn btn-outline-dark" style="width:100%;">Add </button>

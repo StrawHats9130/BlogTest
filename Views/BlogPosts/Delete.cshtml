@@ -74,10 +74,20 @@
         <dd>
             @Html.DisplayFor(model => model.Published)
         </dd>
+        <dd>
+
+            @if (Model.MediaURL != null)
+            {
+                <img class ="img-respnsive" src="@Model.MediaURL " alt"" />
+            }
+
+
+
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

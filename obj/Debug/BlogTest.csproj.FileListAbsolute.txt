@@ -101,8 +101,8 @@ C:\Users\yarem\source\repos\BlogTest\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\yarem\source\repos\BlogTest\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\yarem\source\repos\BlogTest\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\yarem\source\repos\BlogTest\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\yarem\source\repos\BlogTest\obj\Debug\BlogTest.csprojAssemblyReference.cache
 C:\Users\yarem\source\repos\BlogTest\obj\Debug\BlogTest.csproj.CoreCompileInputs.cache
 C:\Users\yarem\source\repos\BlogTest\obj\Debug\BlogTest.csproj.CopyComplete
 C:\Users\yarem\source\repos\BlogTest\obj\Debug\BlogTest.dll
 C:\Users\yarem\source\repos\BlogTest\obj\Debug\BlogTest.pdb
+C:\Users\yarem\source\repos\BlogTest\obj\Debug\BlogTest.csprojAssemblyReference.cache

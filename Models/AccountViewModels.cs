@@ -62,7 +62,7 @@ namespace BlogTest.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
+    public class ExtendedRegisterViewModel
     {
         [Required]
         [EmailAddress]
@@ -83,21 +83,22 @@ namespace BlogTest.Models
 
     }
 
-    public class ExtendededRegisterViewModel : RegisterViewModel
+    public class ExtendededRegisterViewModel : ExtendedRegisterViewModel
     {
 
 
         // Adding a property of DisplayName that displays it self as UserName.
         [Required]
-        [StringLength(50,ErrorMessage = "The {0} is mininlenth of {}", MinimumLength =2)]
+        [StringLength(50,ErrorMessage = "The {0} must be at least {2} characters long and no more than {1} characters long. ", MinimumLength =2)]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
-        [StringLength(50, ErrorMessage = "The {0} is mininlenth of {}", MinimumLength = 2)]
+        [Required]
+        [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long and no more than {1} characters long. ", MinimumLength = 2)]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [StringLength(50, ErrorMessage = "The {0} is mininlenth of {}", MinimumLength = 2)]
+        [StringLength(50, ErrorMessage = "The {0} is max lenth of {1} characters long.")]
         [Display(Name = "User Name")]
         public string DisplayName { get; set; }
 

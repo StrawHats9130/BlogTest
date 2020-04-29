@@ -98,7 +98,7 @@ namespace BlogTest.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,BlogPostId,AuthorId,Created,Updated,UpdateReason,Body")] Comment comment)
+        public ActionResult Edit([Bind(Include = "Id,BlogPostId,AuthorId,Created,Updated,UpdateReason,CommentBody")] Comment comment)
         {
             if (ModelState.IsValid)
             {

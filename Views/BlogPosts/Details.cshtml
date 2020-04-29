@@ -70,6 +70,14 @@
                                                     <p>@Html.Raw(comment.CommentBody) </p>
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p>
+                                                        @Html.ActionLink("Edit", "Edit", new { Id = Model.Id }) |
+                                                        @Html.ActionLink("Delete", "Edit", new { Id = Model.Id }) 
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -119,30 +119,21 @@
                                             @*<a href="index.html">Home</a>*@
                                             @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
                                         </li>
-                                        @*<li>
-                                            @Html.ActionLink("Sample Post", "Details", "BlogPosts", new { id = 1 }, new { @class = "nav-link" })
-                                        </li>*@
 
-                                        @if(User.IsInRole("Admin"))
-
-                                       
+                                        @if (User.IsInRole("Admin"))
                                         {
                                             <li>
                                                 @Html.ActionLink("Create", "Create", "BlogPosts", null, new { @class = "nav-link" })
                                             </li>
-
                                         }
 
-                                        @if(User.IsInRole("Admin")|| User.IsInRole("Moderator")) 
-                                        
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
                                         {
                                             <li>
                                                 @Html.ActionLink("Blog List", "Index", "BlogPosts", null, new { @class = "nav-link" })
                                             </li>
-
                                         }
-
-                                            @*<li><a href="contact.html">Contact</a></li>*@
+                                        @*<li><a href="contact.html">Contact</a></li>*@
                                     </ul>
 
                                     @Html.Partial("_LoginPartial")
@@ -196,13 +187,37 @@
                                 <!-- Nav Start -->
                                 <div class="classynav">
                                     <ul>
-                                        <li><a href="#">Home</a></li>
-                                        <li><a href="#">About Us</a></li>
-                                        <li><a href="#">Lifestyle</a></li>
-                                        <li><a href="#">travel</a></li>
-                                        <li><a href="#">Music</a></li>
-                                        <li><a href="#">Contact</a></li>
+                                        <li>
+                                            @*<a href="index.html">Home</a>*@
+                                            @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+                                        </li>
+
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <li>
+                                                @Html.ActionLink("Create", "Create", "BlogPosts", null, new { @class = "nav-link" })
+                                            </li>
+                                        }
+
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                                        {
+                                            <li>
+                                                @Html.ActionLink("Blog List", "Index", "BlogPosts", null, new { @class = "nav-link" })
+                                            </li>
+                                        }
+                                        @*<li><a href="contact.html">Contact</a></li>*@
                                     </ul>
+
+                                    @Html.Partial("_LoginPartial")
+                                    @*<ul>
+
+                                            <li><a href="#">Home</a></li>
+                                            <li><a href="#">About Us</a></li>
+                                            <li><a href="#">Lifestyle</a></li>
+                                            <li><a href="#">travel</a></li>
+                                            <li><a href="#">Music</a></li>
+                                            <li><a href="#">Contact</a></li>
+                                        </ul>*@
                                 </div>
                                 <!-- Nav End -->
                             </div>
@@ -210,14 +225,14 @@
                     </div>
 
                     <!-- Footer Social Area -->
-                    <div class="footer-social-area mt-30">
-                        @*<a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                    @*<div class="footer-social-area mt-30">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
                             <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                             <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                             <a href="#" data-toggle="tooltip" data-placement="top" title="Dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Behance"><i class="fa fa-behance" aria-hidden="true"></i></a>*@
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Behance"><i class="fa fa-behance" aria-hidden="true"></i></a>
                         <a href="#" data-toggle="tooltip" data-placement="top" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
@@ -243,15 +258,15 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
 
     @*<script>
-        ClassicEditor
-            .create(document.querySelector('#Body'))
-            .then(editor => {
-                console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    </script>*@
+            ClassicEditor
+                .create(document.querySelector('#Body'))
+                .then(editor => {
+                    console.log(editor);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>*@
 
     @RenderSection("Scripts", false)
 

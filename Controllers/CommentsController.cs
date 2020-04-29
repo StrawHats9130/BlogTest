@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace BlogTest.Controllers
 {
+        [Authorize(Roles = "Admin")]
     public class CommentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -51,6 +52,7 @@ namespace BlogTest.Controllers
         
         [ValidateAntiForgeryToken]
         [HttpPost, ValidateInput(false)]
+        [Authorize(Roles = "Moderator")]
         //public ActionResult Create([Bind(Include = "Id,BlogPostId,AuthorId,Created,Updated,UpdateReason,Body")] Comment comment)
         public ActionResult Create(string commentBody, int blogPostId, string slug )
         {

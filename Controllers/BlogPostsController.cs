@@ -41,6 +41,7 @@ namespace BlogTest.Controllers
         }
 
         // GET: BlogPosts/Create
+        
         public ActionResult Create()
         {
             return View();
@@ -99,6 +100,7 @@ namespace BlogTest.Controllers
         }
 
         // GET: BlogPosts/Edit/5
+
         public ActionResult Edit(string slug)
         {
             if (slug == null)
@@ -118,6 +120,7 @@ namespace BlogTest.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+       
         public ActionResult Edit([Bind(Include = "Id,Created,Title,Slug,Abstract,Body,MediaURL,Published")] BlogPost blogPost, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)

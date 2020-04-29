@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 
 namespace BlogTest.Controllers
@@ -48,10 +49,11 @@ namespace BlogTest.Controllers
             {
                 try
                 {
-                    var body = "<p>Email From: <bold>{0}</bold> ({1})</p><p>Message:</p><p>{2}</p>";
-                    var from = "MyPortfolio<example@email.com>";
-                    model.Body = "This is a message from your portfolio site.  The name and the email of the contacting person is above.";
-                    var email = new MailMessage(from, ConfigurationManager.AppSettings["emailto"])
+                    var body = "<p>Email From: <bold>{0}</bold> {1} </p><p>Message:</p><p>{2}</p>";
+                    var from = $"Bens Blog<{WebConfigurationManager.AppSettings["emailFrom"]}>";
+                    model.Body = "This is a message from your blog site.  The name and the email of the contacting person is above.";
+
+                    var email = new MailMessage(from, WebConfigurationManager.AppSettings["emailto"])
                     {
                         Subject = "Portfolio Contact Email",
                         Body = string.Format(body, model.FromName, model.FromEmail, model.Body),
@@ -60,8 +62,9 @@ namespace BlogTest.Controllers
 
                     var svc = new PersonalEmail();
                     await svc.SendAsync(email);
+                    return RedirectToAction("Index", "Home");
 
-                    return View(new EmailModel());
+                    //return View(new EmailModel());
                 }
                 catch (Exception ex)
                 {

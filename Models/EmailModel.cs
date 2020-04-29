@@ -12,9 +12,9 @@ namespace BlogTest.Models
         public string FromName { get; set; }
         [Required, Display(Name ="Email"),EmailAddress]
         public string FromEmail { get; set; }
-        [Required]
+       // [Required]
         public string Subject { get; set; }
-        [Required]
+        //[Required]
         public string Body { get; set; }
 
     }

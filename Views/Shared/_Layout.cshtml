@@ -14,8 +14,11 @@
     <link rel="icon" href="~/Images/favicon.ico">
 
     <!-- Style CSS -->
-
     <link href="~/Content/style.css" rel="stylesheet" />
+
+    <!--Style PageList-->
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -88,7 +91,7 @@
                             <div class="breaking-news-area">
                                 <div id="breakingNewsTicker" class="ticker">
                                     <ul>
-                                        <li><a href="#">Hello User @User.Identity.Name !</a></li>
+                                        <li><a href="#">Hello @User.Identity.Name !</a></li>
                                         <li><a href="#">Hello Mike!</a></li>
                                         <li><a href="#">Hello Coder Foundry!</a></li>
                                         <li><a href="#">Hello Earth!</a></li>
@@ -96,6 +99,23 @@
                                     </ul>
                                 </div>
                             </div>
+                                <div class="classynav">
+                                       <div id="search-wrapper">
+                                           @using (Html.BeginForm("Index","Home",FormMethod.Get, new { @class= "form" }))
+                                           {
+                                               <div class="controls controls-row search-row">
+                                                   <input id =" searchStr" name="searchStr" class="input-block-level" type="text" placeholder="search" />
+                                                   <button id=" btnSearchStr" name="btnSearchStr" class="btn btn-outline-success" type="submit">
+                                                       <i class="icon-search"/>
+                                                   </button>
+                                               </div>
+                                           }
+                                            @*<form action="#">
+                                                <input type="text" id="search" placeholder="Search something...">
+                                                <div id="close-icon"></div>
+                                                <input class="d-none" type="submit" value="">
+                                            </form>*@
+                                       </div>
                             @*<div class="subscribe-btn">
                                     <a href="#" class="btn subscribe-btn" data-toggle="modal" data-target="#subsModal">Login</a>
                                 </div>*@
@@ -113,7 +133,6 @@
                                 </div>
 
                                 <!-- Nav Start -->
-                                <div class="classynav">
                                     <ul>
                                         <li>
                                             @*<a href="index.html">Home</a>*@
@@ -138,6 +157,7 @@
                                             </li>
                                         }
                                         @*<li><a href="contact.html">Contact</a></li>*@
+
                                     </ul>
 
                                     @Html.Partial("_LoginPartial")

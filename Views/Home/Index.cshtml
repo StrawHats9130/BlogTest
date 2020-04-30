@@ -1,5 +1,9 @@
 ﻿@using BlogTest.Models
-@model IEnumerable<BlogPost>
+@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<BlogPost>
+
+    @*<link href="~/Content/PagedList.css" rel="stylesheet" />*@
 
 <!-- ##### Hero Area Start ##### -->
 <div class="hero-area">
@@ -63,36 +67,39 @@
 
                     @foreach (var post in Model)
                     {
-                    <div class="row ">
-                        @Html.Hidden(post.Id.ToString())
-                        <div class="col col-md-6 col-lg-4">
-                            <!-- Blog Content -->
-                            <div class="single-blog-content">
-                                <div class="line"></div>
-                                <a href="#" class="post-tag">@post.Title</a>
-                                <h4><a href="#" class="post-headline">@post.Abstract</a></h4>
-                                <p>Ben Added this on @post.Created.ToString("MMM dd, yyyy");</p>
-                                <a> @Html.ActionLink("Read More", "Details", "BlogPosts", new { post.Slug }, new { @class = "nav-link btn original-btn" })</a>
+                        <div class="row ">
+                            @Html.Hidden(post.Id.ToString())
+                            <div class="col col-md-6 col-lg-4">
+                                <!-- Blog Content -->
+                                <div class="single-blog-content">
+                                    <div class="line"></div>
+                                    <a href="#" class="post-tag">@post.Title</a>
+                                    <h4><a href="#" class="post-headline">@post.Abstract</a></h4>
+                                    <p>Ben Added this on @post.Created.ToString("MMM dd, yyyy");</p>
+                                    <a> @Html.ActionLink("Read More", "Details", "BlogPosts", new { post.Slug }, new { @class = "nav-link btn original-btn" })</a>
+                                </div>
+                            </div>
+                            <div class="col col-md-6 col-lg-4">
+                                <div class="single-catagory-area clearfix mb-100">
+                                    @if (post.MediaURL != null)
+                                    {
+                                        <img class="img-respnsive" src="@post.MediaURL " alt"" />
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Images/FamilyFun.jpg" />
+                                    }
+                                    @*Catagory Title
+                        <div class="catagory-title">
+                            <a href="#">Soon tobe post.MediaUrl</a>
+                        </div>*@
+                                </div>
                             </div>
                         </div>
-                        <div class="col col-md-6 col-lg-4">
-                            <div class="single-catagory-area clearfix mb-100">
-                                @if (post.MediaURL != null)
-                                {
-                                    <img class="img-respnsive" src="@post.MediaURL " alt"" />
-                                }
-                                else
-                                {
-                                    <img src="~/Images/FamilyFun.jpg" />
-                                }
-                                @*Catagory Title
-                <div class="catagory-title">
-                    <a href="#">Soon tobe post.MediaUrl</a>
-                </div>*@
-                            </div>
-                        </div>
-                    </div>
+
                     }
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchStr = ViewBag.Search }))
                 </div>
             </div>
 
@@ -377,3 +384,5 @@
     </div>*@
 
 <!-- ##### Instagram Feed Area End ##### -->
+
+

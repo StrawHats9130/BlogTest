@@ -9,17 +9,29 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
+using BlogTest.Helpers;
 
 namespace BlogTest.Controllers
 {
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private SearchHelpers searchHelpers = new SearchHelpers();
 
-        public ActionResult Index()
+        public ActionResult Index(int? page, string searchStr)
         {
+
+            ViewBag.Search = searchStr;
+            var blogList = searchHelpers.IndexSearch(searchStr);
+
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+           
+            return View(blogList.Where(b => b.Published).OrderByDescending(p => p.Created).ToPagedList(pageNumber, pageSize));
             //Get all the BlogPost that are Published
-             return View(db.BlogPosts.Where(foo => foo.Published).OrderByDescending(b => b.Created).ToList());
+           // return View(db.BlogPosts.Where(foo => foo.Published).OrderByDescending(b => b.Created).ToList());
 
             //temp string to test with
             //return View(db.BlogPosts.OrderByDescending(b => b.Created).ToList());

@@ -106,3 +106,7 @@ C:\Users\yarem\source\repos\BlogTest\obj\Debug\BlogTest.csproj.CopyComplete
 C:\Users\yarem\source\repos\BlogTest\obj\Debug\BlogTest.dll
 C:\Users\yarem\source\repos\BlogTest\obj\Debug\BlogTest.pdb
 C:\Users\yarem\source\repos\BlogTest\obj\Debug\BlogTest.csprojAssemblyReference.cache
+C:\Users\yarem\source\repos\BlogTest\bin\PagedList.dll
+C:\Users\yarem\source\repos\BlogTest\bin\PagedList.Mvc.dll
+C:\Users\yarem\source\repos\BlogTest\bin\PagedList.xml
+C:\Users\yarem\source\repos\BlogTest\bin\PagedList.Mvc.xml

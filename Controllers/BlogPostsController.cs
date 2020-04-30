@@ -10,6 +10,8 @@ using System.Web;
 using System.Web.Mvc;
 using BlogTest.Helpers;
 using BlogTest.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace BlogTest.Controllers
 {
@@ -17,11 +19,17 @@ namespace BlogTest.Controllers
     public class BlogPostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        private SearchHelpers searchHelpers = new SearchHelpers();
         // GET: BlogPosts
-        public ActionResult Index()
+        public ActionResult Index(int? page, string searchStr)
         {
-            return View(db.BlogPosts.ToList());
+            ViewBag.Search = searchStr;
+            var blogList = searchHelpers.IndexSearch(searchStr);
+
+            int pageSize = 4;
+            int pageNumber =( page ?? 1);
+           
+            return View(blogList.OrderByDescending(p => p.Created).ToPagedList(pageNumber,pageSize));
         }
 
         // GET: BlogPosts/Details/5

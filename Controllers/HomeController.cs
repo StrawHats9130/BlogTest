@@ -15,6 +15,7 @@ using BlogTest.Helpers;
 
 namespace BlogTest.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -26,7 +27,7 @@ namespace BlogTest.Controllers
             ViewBag.Search = searchStr;
             var blogList = searchHelpers.IndexSearch(searchStr);
 
-            int pageSize = 4;
+            int pageSize = 1;
             int pageNumber = (page ?? 1);
            
             return View(blogList.Where(b => b.Published).OrderByDescending(p => p.Created).ToPagedList(pageNumber, pageSize));

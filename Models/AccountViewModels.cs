@@ -12,7 +12,14 @@ namespace BlogTest.Models
 
     public class ExternalLoginListViewModel
     {
-        public string ReturnUrl { get; set; }
+        //private string _returnUrl;
+        //public string ReturnUrl
+        //{
+        //    get { return "https://localhost:44370/Account/Login"; }
+        //    set { _returnUrl = value; }
+        //}
+        public string ReturnUrl { get;  set;}
+            
     }
 
     public class SendCodeViewModel

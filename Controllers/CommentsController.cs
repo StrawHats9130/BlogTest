@@ -11,7 +11,8 @@ using Microsoft.AspNet.Identity;
 
 namespace BlogTest.Controllers
 {
-        [Authorize(Roles = "Admin")]
+    [RequireHttps]
+    [Authorize(Roles = "Admin")]
     public class CommentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

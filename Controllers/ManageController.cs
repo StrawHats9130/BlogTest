@@ -10,6 +10,7 @@ using BlogTest.Models;
 
 namespace BlogTest.Controllers
 {
+    [RequireHttps]
     [Authorize]
     public class ManageController : Controller
     {

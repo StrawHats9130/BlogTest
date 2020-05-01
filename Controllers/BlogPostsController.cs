@@ -15,6 +15,7 @@ using PagedList.Mvc;
 
 namespace BlogTest.Controllers
 {
+    [RequireHttps]
     [Authorize(Roles = "Admin")]
     public class BlogPostsController : Controller
     {
@@ -26,7 +27,7 @@ namespace BlogTest.Controllers
             ViewBag.Search = searchStr;
             var blogList = searchHelpers.IndexSearch(searchStr);
 
-            int pageSize = 4;
+            int pageSize = 1;
             int pageNumber =( page ?? 1);
            
             return View(blogList.OrderByDescending(p => p.Created).ToPagedList(pageNumber,pageSize));

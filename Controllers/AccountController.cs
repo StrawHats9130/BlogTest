@@ -16,6 +16,7 @@ using BlogTest.App_Start;
 
 namespace BlogTest.Controllers
 {
+    [RequireHttps]
     [Authorize]
     public class AccountController : Controller
     {

@@ -1,0 +1,213 @@
+﻿@model BlogTest.Models.BlogPost
+
+
+<div class="single-blog-wrapper section-padding-0-100">
+
+
+
+    <div class="container">
+        <div class="row">
+            <!-- ##### Post Content Area ##### -->
+            <div class="col-12 col-lg-9">
+                <!-- Single Blog Area  -->
+                <div class="single-blog-area blog-style-2 mb-50">
+                    <!-- Blog Content -->
+                    <div class="single-blog-content">
+                        <div class="line"></div>
+                        <a href="#" class="post-tag"></a>
+                        <h3>@Model.Title </h3>
+                        <h4><a href="#" class="post-headline mb-0">@Model.Abstract</a></h4>
+                        <div class="post-meta mb-50">
+                            <p>Writen on: @Model.Created.ToString("MMM dd, yyyy")</p>
+                            <p>Author: Ben Yarema</p>
+                            <p>Comments: @Model.Comments.Count.ToString()</p>
+                        </div>
+
+                        <p>@Html.Raw(Model.Body) </p>
+                    </div>
+                </div>
+                <!--Comment Area-->
+                <section>
+                    <div class="row">
+                        <div class="col">
+                            @foreach (var comment in Model.Comments.OrderByDescending(k => k.Created).ToList())
+                            {
+                                // @Html.Hidden("Id", comment.Id)
+                                @Html.Hidden(comment.Id.ToString())
+
+                                <div class="single_comment_area">
+                                    <div class="row" style="border-top-style:groove; border-top-color:cyan; padding:15px; ">
+                                        <div class="col-3" style="background-color:antiquewhite">
+
+                                            @if  (Model.MediaURL != null)
+                                            {
+                                                <img class="img-responsive" src = "@Model.MediaURL" alt="" /> 
+                                            }
+
+                                            @*<div class="comment-meta">
+
+                                                <div class="comment-author">
+                                                                        <img src="~/Images/b8.jpg" alt="author">
+                                                                  espnsive" src="@Model.MediaURL " alt"" />
+                                                    }      @if (Model.MediaURL != null)
+                                                    {
+                                                        <img class="img-r
+                                                                        <img src="~/Images/b8.jpg" />
+                                                                    </div>
+                                            </div>*@
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p><a href="#" class="post-author">Author: @comment.Author.FirstName  @comment.Author.LastName </a></p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h6> Created: @comment.Created.ToString("MMM dd yyyy")</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col" style="background-color:aqua">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h6>Comment:</h6>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p>@Html.Raw(comment.CommentBody) </p>
+                                                </div>
+                                            </div>
+
+                                            @*figure out why I cant jump to comments/Edits or  comments/Delete*@
+
+                                            @*<div class="row">
+                                                    <div class="col">
+                                                        <p>
+                                                            @Html.ActionLink("Edit", "Edit","Comemnts",null, new { id = comment.Id }) |
+                                                            @Html.ActionLink("Delete", "Delete","Comments", null,new { id = comment.Id })
+                                                        </p>
+                                                    </div>
+                                                </div>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </section>
+
+
+                <!--Create Comments Area Start -->
+                <div class="row" style="border-top-style:groove; border-top-color:cyan; padding:15px; ">
+                    <div class="col">
+                        <h6>Create Comments: </h6>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            using (Html.BeginForm("Create", "Comments", FormMethod.Post, null))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                @Html.Hidden("BlogPostId", Model.Id)
+                                @Html.HiddenFor(model => model.Slug)
+                                @Html.TextArea("CommentBody", new { rows = 10, cols = 100 })
+                                <div class="row" style="padding:15px">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-outline-dark" style="width:100%;">Add </button>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-a-comment-area mt-70">
+                @*<h5>Leave a reply</h5>*@
+                <!-- Reply Form -->
+                @*<form action="#" method="post">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="group">
+                                    <input type="text" name="name" id="name" required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Name</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="group">
+                                    <input type="email" name="email" id="email" required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Email</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="group">
+                                    <input type="text" name="subject" id="subject" required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Subject</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="group">
+                                    <textarea name="message" id="message" required></textarea>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Comment</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn original-btn">Reply</button>
+                            </div>
+                        </div>
+                    </form>*@
+            </div>
+        </div>
+
+        @*
+
+                     Widget Area
+                    <div class="sidebar-widget-area">
+                        <h5 class="title">Tags</h5>
+                        <div class="widget-content">
+                            <ul class="tags">
+                                <li><a href="#">design</a></li>
+                                <li><a href="#">fashion</a></li>
+                                <li><a href="#">travel</a></li>
+                                <li><a href="#">music</a></li>
+                                <li><a href="#">party</a></li>
+                                <li><a href="#">video</a></li>
+                                <li><a href="#">photography</a></li>
+                                <li><a href="#">adventure</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { Id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#CommentBody'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}
+

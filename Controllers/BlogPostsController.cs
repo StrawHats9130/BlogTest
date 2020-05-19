@@ -16,7 +16,7 @@ using PagedList.Mvc;
 namespace BlogTest.Controllers
 {
     [RequireHttps]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,")]
     public class BlogPostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -27,7 +27,7 @@ namespace BlogTest.Controllers
             ViewBag.Search = searchStr;
             var blogList = searchHelpers.IndexSearch(searchStr);
 
-            int pageSize = 1;
+            int pageSize = 4;
             int pageNumber =( page ?? 1);
            
             return View(blogList.OrderByDescending(p => p.Created).ToPagedList(pageNumber,pageSize));
@@ -129,7 +129,7 @@ namespace BlogTest.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-       
+        
         public ActionResult Edit([Bind(Include = "Id,Created,Title,Slug,Abstract,Body,MediaURL,Published")] BlogPost blogPost, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)

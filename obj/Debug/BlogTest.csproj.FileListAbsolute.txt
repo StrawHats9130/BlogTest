@@ -135,3 +135,4 @@ C:\Users\yarem\source\repos\BlogTest\bin\System.Text.Encodings.Web.xml
 C:\Users\yarem\source\repos\BlogTest\bin\System.Text.Json.xml
 C:\Users\yarem\source\repos\BlogTest\bin\System.Threading.Tasks.Extensions.xml
 C:\Users\yarem\source\repos\BlogTest\bin\System.ValueTuple.xml
+C:\Users\yarem\source\repos\BlogTest\obj\Debug\BlogTest.csprojAssemblyReference.cache

@@ -66,6 +66,7 @@ namespace BlogTest
             });
 
             app.UseGitHubAuthentication("14b29cf438514f76f816", "9bc388c9afe44158711a2d0d3b6b50d07f0555a3");
+           
         }
     }
 }

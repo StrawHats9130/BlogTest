@@ -345,6 +345,7 @@
     <Content Include="Views\Account\ResendEmailConfimation.cshtml" />
     <Content Include="Views\Account\ConfirmationSent.cshtml" />
     <Content Include="Views\Account\PromptUserToConfirm.cshtml" />
+    <None Include="Properties\PublishProfiles\yaremabBlog - Web Deploy.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

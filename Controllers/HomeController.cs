@@ -27,7 +27,7 @@ namespace BlogTest.Controllers
             ViewBag.Search = searchStr;
             var blogList = searchHelpers.IndexSearch(searchStr);
 
-            int pageSize = 1;
+            int pageSize = 4;
             int pageNumber = (page ?? 1);
            
             return View(blogList.Where(b => b.Published).OrderByDescending(p => p.Created).ToPagedList(pageNumber, pageSize));

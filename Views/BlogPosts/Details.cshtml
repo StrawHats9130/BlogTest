@@ -22,6 +22,10 @@
                             <p>Author: Ben Yarema</p>
                             <p>Comments: @Model.Comments.Count.ToString()</p>
                         </div>
+                        @if (Model.MediaURL != null)
+                        {
+                            <img class="img-responsive" src="@Model.MediaURL" alt="" />
+                        }
 
                         <p>@Html.Raw(Model.Body) </p>
                     </div>
@@ -32,24 +36,26 @@
                         <div class="col">
                             @foreach (var comment in Model.Comments.OrderByDescending(k => k.Created).ToList())
                             {
-                                @Html.Hidden("Id", comment.Id)
+                                // @Html.Hidden("Id", comment.Id)
+                                @Html.Hidden(comment.Id.ToString())
 
                                 <div class="single_comment_area">
                                     <div class="row" style="border-top-style:groove; border-top-color:cyan; padding:15px; ">
-                                        <div class="col">
-                                            <div class="comment-meta">
+                                        <div class="col-3" style="background-color:antiquewhite">
+
+                                         
+
+                                            @*<div class="comment-meta">
 
                                                 <div class="comment-author">
-                                                    <img src="~/Images/b8.jpg" alt="author">
-                                                    @*@if (Model.MediaURL != null)
-                                {
-                                    <img class="img-respnsive" src="@Model.MediaURL " alt"" />
-                                }*@
-                                                    @*<img src="~/Images/b8.jpg" />*@
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
+                                                                        <img src="~/Images/b8.jpg" alt="author">
+                                                                  espnsive" src="@Model.MediaURL " alt"" />
+                                                    }      @if (Model.MediaURL != null)
+                                                    {
+                                                        <img class="img-r
+                                                                        <img src="~/Images/b8.jpg" />
+                                                                    </div>
+                                            </div>*@
                                             <div class="row">
                                                 <div class="col">
                                                     <p><a href="#" class="post-author">Author: @comment.Author.FirstName  @comment.Author.LastName </a></p>
@@ -60,6 +66,8 @@
                                                     <h6> Created: @comment.Created.ToString("MMM dd yyyy")</h6>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="col" style="background-color:aqua">
                                             <div class="row">
                                                 <div class="col">
                                                     <h6>Comment:</h6>
@@ -70,14 +78,17 @@
                                                     <p>@Html.Raw(comment.CommentBody) </p>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <p>
-                                                        @Html.ActionLink("Edit", "Edit", new { Id = Model.Id }) |
-                                                        @Html.ActionLink("Delete", "Edit", new { Id = Model.Id }) 
-                                                    </p>
-                                                </div>
-                                            </div>
+
+                                            @*figure out why I cant jump to comments/Edits or  comments/Delete*@
+
+                                            @*<div class="row">
+                                                    <div class="col">
+                                                        <p>
+                                                            @Html.ActionLink("Edit", "Edit","Comemnts",null, new { id = comment.Id }) |
+                                                            @Html.ActionLink("Delete", "Delete","Comments", null,new { id = comment.Id })
+                                                        </p>
+                                                    </div>
+                                                </div>*@
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +98,7 @@
                 </section>
 
 
-                <!-- Comment Area Start -->
+                <!--Create Comments Area Start -->
                 <div class="row" style="border-top-style:groove; border-top-color:cyan; padding:15px; ">
                     <div class="col">
                         <h6>Create Comments: </h6>
@@ -190,14 +201,14 @@
 
 
     <script>
-            ClassicEditor
-                .create(document.querySelector('#CommentBody'))
-                .then(editor => {
-                    console.log(editor);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        </script>
+        ClassicEditor
+            .create(document.querySelector('#CommentBody'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 }
 

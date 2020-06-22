@@ -249,8 +249,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\classy-nav.css" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="Images\b8.jpg" />
-    <Content Include="Images\FamilyFun.jpg" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\style.css" />
@@ -261,12 +259,10 @@
     <Content Include="fonts\icomoon.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\favicon.ico" />
-    <Content Include="Images\logo.png" />
-    <Content Include="Images\OnePieceFamily.jpg" />
-    <Content Include="Images\OnePieceGroup.jpg" />
-    <Content Include="Images\POW.jpg" />
-    <Content Include="Images\submarine.png" />
+    <Content Include="Images\landscape.jpg" />
+    <Content Include="Images\MyPic-3.png" />
+    <Content Include="Images\POWfavicon-32x32.png" />
+    <Content Include="Images\SOAF.jpg" />
     <Content Include="Scripts\active.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.4.min.js" />

@@ -45,17 +45,7 @@
 
                                          
 
-                                            @*<div class="comment-meta">
-
-                                                <div class="comment-author">
-                                                                        <img src="~/Images/b8.jpg" alt="author">
-                                                                  espnsive" src="@Model.MediaURL " alt"" />
-                                                    }      @if (Model.MediaURL != null)
-                                                    {
-                                                        <img class="img-r
-                                                                        <img src="~/Images/b8.jpg" />
-                                                                    </div>
-                                            </div>*@
+                                          
                                             <div class="row">
                                                 <div class="col">
                                                     <p><a href="#" class="post-author">Author: @comment.Author.FirstName  @comment.Author.LastName </a></p>
@@ -67,7 +57,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col" style="background-color:aqua">
+                                        <div class="col" style="background-color:powderblue">
                                             <div class="row">
                                                 <div class="col">
                                                     <h6>Comment:</h6>
@@ -75,7 +65,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p>@Html.Raw(comment.CommentBody) </p>
+                                                    <h6 >@Html.Raw(comment.CommentBody) </h6>
                                                 </div>
                                             </div>
 

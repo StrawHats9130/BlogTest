@@ -8,11 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <!-- Title -->
-    <title>Original - Lifestyle Blog Template</title>
+    <title>Ben's Blog</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="~/Images/favicon.ico">
-
+     @*Change this Image out*@
+    <link rel="icon" href="~/Images/POWfavicon-32x32.png">
+    @*<img src="~/Images/POWfavicon-32x32.png" />*@
     <!-- Style CSS -->
     <link href="~/Content/style.css" rel="stylesheet" />
 
@@ -22,30 +23,7 @@
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="preload-content">
-            <div id="original-load"></div>
-        </div>
-    </div>
-
-    <!-- Subscribe Modal -->
-    <div class="subscribe-newsletter-area">
-        <div class="modal fade" id="subsModal" tabindex="-1" role="dialog" aria-labelledby="subsModal" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <div class="modal-body">
-                        <h5 class="title">Login Here?</h5>
-                        <form action="#" class="newsletterForm" method="post">
-                            <input type="email" name="email" id="subscribesForm2" placeholder="Your e-mail here">
-                            <button type="submit" class="btn original-btn">Login</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   
 
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
@@ -56,17 +34,7 @@
                 <div class="row h-100 align-items-baseline">
                     <!-- Breaking News Area -->
                     <!-- Top Social Area -->
-                    @*<div class=" col">
-            <div id="breakingNewsTicker" class="ticker">
-                <ul>
-                    <li><a href="#">Hello @User.Identity.Name !</a></li>
-                    <li><a href="#">Hello Mike!</a></li>
-                    <li><a href="#">Hello Coder Foundry!</a></li>
-                    <li><a href="#">Hello Earth!</a></li>
-                    <li><a href="#">Hello Everybody!</a></li>
-                </ul>
-            </div>
-        </div>*@
+                  
 
                     @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
                     @Html.ActionLink("Contact Us", "Contact", "Home", null, new { @class = "nav-link" })
@@ -85,7 +53,7 @@
                     @Html.Partial("_LoginPartial")
                     @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "form" }))
                     {
-                        <div class="controls controls-row search-row">
+                        <div class="controls controls-row search-row p-4">
                             <input id=" searchStr" name="searchStr" class="input-block-level" type="text" placeholder="search" />
                             <button id=" btnSearchStr" name="btnSearchStr" class="btn btn-outline-success" type="submit">
                                 <i class="icon-search" />
@@ -93,145 +61,11 @@
                         </div>
                     }
 
-                    @*<div class=" col">
-        </div>*@
-                    @*<div class=" col">
-            @Html.ActionLink("Create Blog", "Create", "BlogPosts", null, new { @class = "nav-link" })
-        </div>
-        <div class=" col">
-        </div>
-        <div class=" col">
-        </div>
-        <div class=" col">
-
-        </div>
-        <div class="col">
-            <div class="top-social-area">
-
-            <div id="search-wrapper">
-
-            </div>
-            </div>
-        </div>*@
                 </div>
             </div>
         </div>
 
-        <!-- Logo Area -->
-        @*<div class="logo-area text-center">
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-12">
-                            <a href="index.html" class="original-logo"><img src="~/Images/logo.png" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
-
-        <!-- Nav Area -->
-        @*<div class="original-nav-area" id="stickyNav">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                     Classy Menu 
-                    <nav class="classy-navbar justify-content-between">
-                        <div class=" row h-100 align-items-center">
-                            <div class="col-12 col-sm-8"></div>
-
-                            <div id="breakingNewsTicker" class="ticker">
-                                    <ul>
-                                        <li><a href="#">Hello @User.Identity.Name !</a></li>
-                                        <li><a href="#">Hello Mike!</a></li>
-                                        <li><a href="#">Hello Coder Foundry!</a></li>
-                                        <li><a href="#">Hello Earth!</a></li>
-                                        <li><a href="#">Hello Everybody!</a></li>
-                                    </ul>
-                                </div>
-
-                            <div class="classynav">
-
-                                <div class="subscribe-btn">
-                                        <a href="#" class="btn subscribe-btn" data-toggle="modal" data-target="#subsModal">Login</a>
-                                    </div>
-
-                                 Navbar Toggler 
-                                <div class="classy-navbar-toggler">
-                                        <span class="navbarToggler"><span>hi</span><span></span><span></span></span>hi
-                                    </div>
-
-                                 Menu 
-                                <div class="classy-menu" id="originalNav">
-                                     close btn 
-                                    <div class="classycloseIcon">
-                                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                                        </div>
-
-                                     Nav Start 
-                                    <ul class="nav navbar-nav nav-item ">
-                                        <li class="nav-item d-none ">
-                                            <a href="index.html">Home</a>
-                                            @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
-                                        </li>
-                                        <li class="nav-item d-none d-sm-inline-block">
-                                            <a href="index.html">Home</a>
-                                            @Html.ActionLink("Contact Us", "Contact", "Home", null, new { @class = "nav-link" })
-                                        </li>
-
-                                        @if (User.IsInRole("Admin"))
-                                        {
-                                            <li>
-                                                @Html.ActionLink("Create Blog", "Create", "BlogPosts", null, new { @class = "nav-link" })
-                                            </li>
-                                            <li>
-                                                @Html.ActionLink("Blog List", "Index", "BlogPosts", null, new { @class = "nav-link" })
-                                            </li>
-                                        }
-
-                                        @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
-                                        {
-                                            <li>
-                                                @Html.ActionLink("Comments List", "Index", "Comments", null, new { @class = "nav-link" })
-                                            </li>
-                                        }
-                                        <li><a href="contact.html">Contact</a></li>
-
-
-                                    </ul>
-                                    @Html.Partial("_LoginPartial")
-                                    <div id="search-wrapper">
-                                        @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "form" }))
-                                        {
-                                            <div class="controls controls-row search-row">
-                                                <input id=" searchStr" name="searchStr" class="input-block-level" type="text" placeholder="search" />
-                                                <button id=" btnSearchStr" name="btnSearchStr" class="btn btn-outline-success" type="submit">
-                                                    <i class="icon-search" />
-                                                </button>
-                                            </div>
-                                        }
-
-                                        <form action="#">
-                                                <input type="text" id="search" placeholder="Search something...">
-                                                <div id="close-icon"></div>
-                                                <input class="d-none" type="submit" value="">
-                                            </form>
-                                    </div>
-
-                                     Search Form  
-                                    <div id="search-wrapper">
-                                            <form action="#">
-                                                <input type="text" id="search" placeholder="Search something...">
-                                                <div id="close-icon"></div>
-                                                <input class="d-none" type="submit" value="">
-                                            </form>
-                                        </div>
-                                </div>
-                                 Nav End 
-                            </div>
-
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>*@
+       
     </header>
     <!-- ##### Header Area End ##### -->
     <div>
@@ -289,30 +123,15 @@
                                     </ul>
 
                                     @Html.Partial("_LoginPartial")
-                                    @*<ul>
-
-                                            <li><a href="#">Home</a></li>
-                                            <li><a href="#">About Us</a></li>
-                                            <li><a href="#">Lifestyle</a></li>
-                                            <li><a href="#">travel</a></li>
-                                            <li><a href="#">Music</a></li>
-                                            <li><a href="#">Contact</a></li>
-                                        </ul>*@
+                                   
                                 </div>
                                 <!-- Nav End -->
                             </div>
                         </nav>
                     </div>
 
-                    <!-- Footer Social Area -->
-                    @*<div class="footer-social-area mt-30">
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="top" title="Dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="top" title="Behance"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                        </div>*@
+                   
+                 
                 </div>
             </div>
         </div>
@@ -337,16 +156,7 @@
     <!--CK Editor -->
     <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
 
-    @*<script>
-            ClassicEditor
-                .create(document.querySelector('#Body'))
-                .then(editor => {
-                    console.log(editor);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        </script>*@
+   
 
     @RenderSection("Scripts", false)
 

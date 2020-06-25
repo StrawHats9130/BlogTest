@@ -259,10 +259,15 @@
     <Content Include="fonts\icomoon.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Jen.jpg" />
     <Content Include="Images\landscape.jpg" />
+    <Content Include="Images\My-Pic-4.jfif" />
     <Content Include="Images\MyPic-3.png" />
+    <Content Include="Images\OIP.jpg" />
+    <Content Include="Images\OIP2.jpg" />
     <Content Include="Images\POWfavicon-32x32.png" />
     <Content Include="Images\SOAF.jpg" />
+    <Content Include="Images\Sunset.jpg" />
     <Content Include="Scripts\active.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.4.min.js" />

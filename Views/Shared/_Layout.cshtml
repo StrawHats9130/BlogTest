@@ -34,7 +34,7 @@
                 <div class="row h-100 align-items-baseline">
                     <!-- Breaking News Area -->
                     <!-- Top Social Area -->
-                  
+
 
                     @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
                     @Html.ActionLink("Contact Us", "Contact", "Home", null, new { @class = "nav-link" })
@@ -54,12 +54,13 @@
                     @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "form" }))
                     {
                         <div class="controls controls-row search-row p-4">
-                            <input id=" searchStr" name="searchStr" class="input-block-level" type="text" placeholder="search" />
-                            <button id=" btnSearchStr" name="btnSearchStr" class="btn btn-outline-success" type="submit">
+                            <input id=" search" name="searchStr" class="btn btn-outline-dark btn-sm" style="height:15px" type="text" placeholder="search" />
+                            @*<button id=" btnSearchStr" name="btnSearchStr" class="btn btn-outline-success" type="submit">
                                 <i class="icon-search" />
-                            </button>
+                            </button>*@
                         </div>
                     }
+                   
 
                 </div>
             </div>

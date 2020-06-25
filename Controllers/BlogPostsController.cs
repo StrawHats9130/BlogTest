@@ -61,7 +61,7 @@ namespace BlogTest.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Abstract,Body,MediaURL,Published,CommentBody")] BlogPost blogPost, HttpPostedFileBase image)
+        public ActionResult Create([Bind(Include = "Id,Title,Abstract,Body,MediaURL,Published,CommentBody,Created")] BlogPost blogPost, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace BlogTest.Controllers
                 }
                 
                 blogPost.Slug = slug;
-                blogPost.Created = DateTime.Now;
+               // blogPost.Created = DateTime.Now;
                 db.BlogPosts.Add(blogPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");

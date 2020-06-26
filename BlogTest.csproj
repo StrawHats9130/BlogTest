@@ -273,6 +273,21 @@
     <Content Include="Scripts\jquery-2.2.4.min.js" />
     <Content Include="Scripts\plugins.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Uploads\blog1.jpg" />
+    <Content Include="Uploads\blog10.jpg" />
+    <Content Include="Uploads\blog11.jpg" />
+    <Content Include="Uploads\blog12.jpg" />
+    <Content Include="Uploads\Blog2.jpg" />
+    <Content Include="Uploads\Blog3.jpg" />
+    <Content Include="Uploads\Blog4.jpg" />
+    <Content Include="Uploads\Blog5.jpeg" />
+    <Content Include="Uploads\Blog6.jpg" />
+    <Content Include="Uploads\blog7.jpg" />
+    <Content Include="Uploads\blog8.jpg" />
+    <Content Include="Uploads\blog9.jpg" />
+    <Content Include="Uploads\FinacialPortalApi.jpg" />
+    <Content Include="Uploads\Jen.jpg" />
+    <Content Include="Uploads\landscape.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -320,7 +335,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
